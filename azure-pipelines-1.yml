@@ -1,0 +1,100 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+
+{
+    "name": "new-vm",
+    "id": "/subscriptions/b2aec48f-6dad-4d57-ad25-dad521fe74a4/resourceGroups/ODL-azure-1063295/providers/Microsoft.Compute/virtualMachines/new-vm",
+    "type": "Microsoft.Compute/virtualMachines",
+    "location": "eastus",
+    "tags": {
+        "DeploymentId": "1063295",
+        "LaunchId": "21565",
+        "LaunchType": "ON_DEMAND_LAB",
+        "TemplateId": "4283",
+        "TenantId": "363"
+    },
+    "properties": {
+        "vmId": "3632fd5b-b0db-467b-8154-0d15fb4bcda9",
+        "hardwareProfile": {
+            "vmSize": "Standard_DS1_v2"
+        },
+        "storageProfile": {
+            "imageReference": {
+                "publisher": "MicrosoftWindowsServer",
+                "offer": "WindowsServer",
+                "sku": "2022-datacenter-azure-edition-hotpatch",
+                "version": "latest",
+                "exactVersion": "20348.1850.230803"
+            },
+            "osDisk": {
+                "osType": "Windows",
+                "name": "new-vm_OsDisk_1_b9b17806f1464b40beca96f7a02d3053",
+                "createOption": "FromImage",
+                "caching": "ReadWrite",
+                "managedDisk": {
+                    "storageAccountType": "StandardSSD_LRS",
+                    "id": "/subscriptions/b2aec48f-6dad-4d57-ad25-dad521fe74a4/resourceGroups/ODL-azure-1063295/providers/Microsoft.Compute/disks/new-vm_OsDisk_1_b9b17806f1464b40beca96f7a02d3053"
+                },
+                "deleteOption": "Delete",
+                "diskSizeGB": 127
+            },
+            "dataDisks": []
+        },
+        "osProfile": {
+            "computerName": "new-vm",
+            "adminUsername": "syedadmin",
+            "windowsConfiguration": {
+                "provisionVMAgent": true,
+                "enableAutomaticUpdates": true,
+                "patchSettings": {
+                    "patchMode": "AutomaticByPlatform",
+                    "assessmentMode": "ImageDefault",
+                    "enableHotpatching": true
+                }
+            },
+            "secrets": [],
+            "allowExtensionOperations": true,
+            "requireGuestProvisionSignal": true
+        },
+        "securityProfile": {
+            "uefiSettings": {
+                "secureBootEnabled": true,
+                "vTpmEnabled": true
+            },
+            "securityType": "TrustedLaunch"
+        },
+        "networkProfile": {
+            "networkInterfaces": [
+                {
+                    "id": "/subscriptions/b2aec48f-6dad-4d57-ad25-dad521fe74a4/resourceGroups/ODL-azure-1063295/providers/Microsoft.Network/networkInterfaces/new-vm301",
+                    "properties": {
+                        "deleteOption": "Detach"
+                    }
+                }
+            ]
+        },
+        "diagnosticsProfile": {
+            "bootDiagnostics": {
+                "enabled": true
+            }
+        },
+        "provisioningState": "Succeeded"
+    }
+}
